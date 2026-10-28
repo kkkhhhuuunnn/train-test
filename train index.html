@@ -44,7 +44,7 @@
 
     .container {
       width: 100%;
-      max-width: 720px;
+      max-width: 740px;
       margin: 0 auto;
       padding: 16px 14px 60px;
     }
@@ -52,18 +52,18 @@
     .screen {
       display: none;
       width: 100%;
-      animation: fadeIn 0.35s ease;
+      animation: fadeIn 0.3s ease;
     }
     .screen.active {
       display: block;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
+      from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 1. 표지 화면 */
+    /* 표지 화면 */
     .cover-wrapper {
       min-height: 82vh;
       display: flex;
@@ -89,7 +89,7 @@
 
     .cover-title {
       font-family: 'Jua', sans-serif;
-      font-size: 2.7rem;
+      font-size: 2.8rem;
       line-height: 1.25;
       margin-bottom: 14px;
       background: linear-gradient(135deg, #ffffff 40%, var(--primary) 100%);
@@ -107,7 +107,7 @@
     }
 
     .train-icon-box {
-      font-size: 4.5rem;
+      font-size: 4.8rem;
       margin-bottom: 40px;
       filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.35));
       animation: bounceTrain 2.5s infinite ease-in-out;
@@ -123,7 +123,7 @@
       color: #04121e;
       border: none;
       padding: 16px 28px;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
       font-family: 'Jua', sans-serif;
       border-radius: 35px;
@@ -138,7 +138,7 @@
       transform: scale(0.97);
     }
 
-    /* 2. 문제 풀이 화면 */
+    /* 대시보드 헤더 */
     .app-header {
       background: var(--card);
       border: 1px solid var(--border);
@@ -163,7 +163,7 @@
     }
 
     .header-info p {
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
       margin-top: 2px;
     }
@@ -184,7 +184,7 @@
       background: #0d1424;
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 11px 14px;
+      padding: 12px 14px;
       border-radius: 10px;
       font-size: 0.92rem;
       outline: none;
@@ -192,6 +192,7 @@
       font-family: inherit;
     }
 
+    /* 퀴즈 카드 */
     .quiz-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -233,6 +234,7 @@
       color: #fff;
       margin-bottom: 16px;
       word-break: keep-all;
+      white-space: pre-line;
     }
 
     .options-group {
@@ -337,9 +339,9 @@
     <!-- 1페이지: 표지 -->
     <div class="screen active" id="screenCover">
       <div class="cover-wrapper">
-        <div class="cover-badge">KOTSA 국가자격시험 CBT 마스터</div>
+        <div class="cover-badge">KOTSA 철도교통안전관리자 완전정복</div>
         <h1 class="cover-title">후이 철교안 공부</h1>
-        <p class="cover-sub">철도교통안전관리자 1·2권 전 단원<br>기출문제 은행 & 실시간 해설</p>
+        <p class="cover-sub">제1편 철도안전법 & 제2편 교통안전관리론<br>단원별 기출문제 CBT 은행</p>
         <div class="train-icon-box">🚅✨</div>
         <button class="btn-main" onclick="startCBT()">기출문제 풀러 가기 ➔</button>
       </div>
@@ -350,26 +352,26 @@
       <header class="app-header">
         <div class="header-info">
           <h2>후이 철교안 공부</h2>
-          <p id="totalCountLabel">문제를 불러오는 중...</p>
+          <p id="totalCountLabel">단원을 선택해 주세요</p>
         </div>
         <div class="score-badge" id="scoreDisplay">0 / 0 점</div>
       </header>
 
-      <select class="filter-select" id="chapterFilter" onchange="filterQuestions()">
-        <option value="ALL">전체 과목 모아풀기</option>
+      <!-- 단원 선택 (선택 시 해당 json 파일을 자동으로 fetch) -->
+      <select class="filter-select" id="chapterFilter" onchange="onChapterSelect()">
         <optgroup label="제1편 교통법규 (철도안전법)">
-          <option value="LAW1">제1장 총칙 및 안전관리체계 (78문항)</option>
-          <option value="LAW2">제2장 철도종사자의 안전관리 (63문항)</option>
-          <option value="LAW3">제3장 철도시설 및 차량 안전관리 (40문항)</option>
-          <option value="LAW4">제4장 운행안전 및 철도보호 (50문항)</option>
-          <option value="LAW5">제5장 철도안전기반 구축 및 벌칙 (45문항)</option>
+          <option value="law1.json" selected>제1장 총칙 및 안전관리체계 (78문항)</option>
+          <option value="law2.json">제2장 철도종사자의 안전관리 (63문항)</option>
+          <option value="law3.json">제3장 철도시설 및 차량 안전관리 (40문항)</option>
+          <option value="law4.json">제4장 운행안전 및 철도보호 (50문항)</option>
+          <option value="law5.json">제5장 철도안전기반 구축 및 벌칙 (45문항)</option>
         </optgroup>
         <optgroup label="제2편 교통안전관리론">
-          <option value="MGT1">제1장 교통안전의 일반이론 (54문항)</option>
-          <option value="MGT2">제2장 교통사고 발생 원인 (61문항)</option>
-          <option value="MGT3">제3장 교통사고 방지 대책 (60문항)</option>
-          <option value="MGT4">제4장 교통안전 관리 조직 (57문항)</option>
-          <option value="MGT5">제5장 교통안전 환경 (52문항)</option>
+          <option value="mgt1.json">제1장 교통안전의 일반이론 (54문항)</option>
+          <option value="mgt2.json">제2장 교통사고 발생 원인 (61문항)</option>
+          <option value="mgt3.json">제3장 교통사고 방지 대책 (60문항)</option>
+          <option value="mgt4.json">제4장 교통안전 관리 조직 (57문항)</option>
+          <option value="mgt5.json">제5장 교통안전 환경 (52문항)</option>
         </optgroup>
       </select>
 
@@ -384,41 +386,43 @@
   </div>
 
   <script>
-    let rawDatabase = [];
     let currentQuestions = [];
     let solvedCount = 0;
     let correctCount = 0;
 
-    // quizData.json 파일에서 전체 문제 로드
-    async function loadQuizData() {
+    // 선택된 json 파일을 비동기로 불러오는 핵심 함수
+    async function fetchChapterData(filename) {
+      const listEl = document.getElementById('quizList');
+      listEl.innerHTML = '<div style="text-align:center; padding:50px 20px; color:var(--text-muted);">문제를 불러오는 중입니다... ⏳</div>';
+      
       try {
-        const response = await fetch('./quizData.json');
-        if (!response.ok) throw new Error('파일을 찾을 수 없습니다.');
-        rawDatabase = await response.json();
+        const response = await fetch(`./${filename}`);
+        if (!response.ok) {
+          throw new Error(`${filename} 파일을 찾을 수 없습니다.`);
+        }
+        currentQuestions = await response.json();
+        solvedCount = 0;
+        correctCount = 0;
+        renderList();
+        updateHeader();
       } catch (err) {
-        console.warn('quizData.json 로드 대기 중 (내장 기본 문제 사용)');
-        rawDatabase = [
-          {
-            cat: "LAW1",
-            catName: "교통법규 제1장",
-            q: "철도안전법에서 정한 '열차'의 정의로 옳은 것은?",
-            opts: [
-              "선로를 운행할 목적으로 철도운영자가 편성하여 열차번호를 부여한 철도차량",
-              "선로를 운행할 목적으로 시·도지사가 편성하여 열차번호를 부여한 철도차량",
-              "선로를 운행할 목적으로 철도운영자가 편성하여 차량번호를 부여한 철도차량",
-              "선로를 운행할 목적으로 시·도지사가 편성하여 차량번호를 부여한 철도차량"
-            ],
-            ans: 0,
-            exp: "철도안전법 제2조 제6호: '열차'란 선로를 운행할 목적으로 철도운영자가 편성하여 '열차번호'를 부여한 철도차량을 말합니다."
-          }
-        ];
+        console.error(err);
+        listEl.innerHTML = `
+          <div style="text-align:center; padding:50px 20px; color:#f87171; line-height:1.6;">
+            <strong>⚠️ [${filename}] 파일을 불러오지 못했습니다.</strong><br>
+            <span style="font-size:0.85rem; color:var(--text-muted);">
+              깃허브 저장소에 <code>${filename}</code> 파일이 생성되어 있는지 확인해 주세요.
+            </span>
+          </div>`;
+        document.getElementById('totalCountLabel').innerText = '문제 로드 대기 중';
+        document.getElementById('scoreDisplay').innerText = '0 / 0 점';
       }
     }
 
     function startCBT() {
       document.getElementById('screenCover').classList.remove('active');
       document.getElementById('screenCBT').classList.add('active');
-      filterQuestions();
+      onChapterSelect();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -431,25 +435,17 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function filterQuestions() {
-      const selected = document.getElementById('chapterFilter').value;
-      solvedCount = 0;
-      correctCount = 0;
-      
-      currentQuestions = (selected === 'ALL')
-        ? rawDatabase
-        : rawDatabase.filter(q => q.cat === selected);
-
-      renderList();
-      updateHeader();
+    function onChapterSelect() {
+      const selectedFile = document.getElementById('chapterFilter').value;
+      fetchChapterData(selectedFile);
     }
 
     function renderList() {
       const listEl = document.getElementById('quizList');
       listEl.innerHTML = '';
 
-      if (currentQuestions.length === 0) {
-        listEl.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);">등록된 문제가 없습니다.</div>';
+      if (!currentQuestions || currentQuestions.length === 0) {
+        listEl.innerHTML = '<div style="text-align:center; padding:50px 20px; color:var(--text-muted);">등록된 문제가 없습니다.</div>';
         return;
       }
 
@@ -460,7 +456,7 @@
 
         card.innerHTML = `
           <div class="q-meta">
-            <span class="q-tag">${q.catName}</span>
+            <span class="q-tag">${q.catName || '기출문제'}</span>
             <span class="q-num">Q${idx + 1}</span>
           </div>
           <div class="q-text">${q.q}</div>
@@ -509,14 +505,10 @@
 
     function updateHeader() {
       const total = currentQuestions.length;
-      document.getElementById('totalCountLabel').innerText = `총 ${total}문항 수록`;
+      document.getElementById('totalCountLabel').innerText = `총 ${total}문항 로드 완료`;
       const score = (total > 0 && solvedCount > 0) ? Math.round((correctCount / total) * 100) : 0;
       document.getElementById('scoreDisplay').innerText = `${correctCount} / ${solvedCount} 문제 (${score}점)`;
     }
-
-    document.addEventListener('DOMContentLoaded', async () => {
-      await loadQuizData();
-    });
   </script>
 </body>
 </html>
