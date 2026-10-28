@@ -49,7 +49,6 @@
       padding: 16px 14px 60px;
     }
 
-    /* 화면 전환 제어 */
     .screen {
       display: none;
       width: 100%;
@@ -64,7 +63,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 1. 첫 페이지: 표지 화면 */
+    /* 1. 표지 화면 */
     .cover-wrapper {
       min-height: 82vh;
       display: flex;
@@ -119,49 +118,27 @@
       50% { transform: translateY(-10px); }
     }
 
-    .cover-btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      width: 100%;
-      max-width: 340px;
-    }
-
     .btn-main {
       background: linear-gradient(135deg, var(--primary), var(--primary-hover));
       color: #04121e;
       border: none;
-      padding: 16px 24px;
+      padding: 16px 28px;
       font-size: 1.1rem;
       font-weight: 800;
       font-family: 'Jua', sans-serif;
       border-radius: 35px;
       cursor: pointer;
       box-shadow: 0 8px 24px rgba(56, 189, 248, 0.3);
-      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+      max-width: 340px;
+      transition: transform 0.2s;
     }
 
     .btn-main:active {
       transform: scale(0.97);
     }
 
-    .btn-sub {
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 14px 20px;
-      font-size: 0.98rem;
-      font-weight: 700;
-      border-radius: 35px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .btn-sub:hover {
-      background: #243248;
-    }
-
-    /* 2. 대시보드 공통 헤더 */
+    /* 2. 문제 풀이 화면 */
     .app-header {
       background: var(--card);
       border: 1px solid var(--border);
@@ -171,11 +148,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
       position: sticky;
       top: 10px;
       z-index: 100;
       backdrop-filter: blur(8px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
     }
 
     .header-info h2 {
@@ -202,111 +179,19 @@
       white-space: nowrap;
     }
 
-    /* 네비게이션 탭 */
-    .nav-tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .tab-btn {
-      flex: 1;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 11px;
-      border-radius: 10px;
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .tab-btn.active {
-      background: var(--primary);
-      color: #04121e;
-      border-color: var(--primary);
-    }
-
     .filter-select {
       width: 100%;
       background: #0d1424;
       border: 1px solid var(--border);
       color: var(--text);
-      padding: 10px 14px;
+      padding: 11px 14px;
       border-radius: 10px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       outline: none;
       margin-bottom: 16px;
       font-family: inherit;
     }
 
-    /* 3. 개념 요약 카드 스타일 */
-    .concept-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px 20px;
-      margin-bottom: 16px;
-      line-height: 1.65;
-    }
-
-    .concept-title {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .concept-section {
-      margin-bottom: 16px;
-    }
-
-    .concept-section:last-child {
-      margin-bottom: 0;
-    }
-
-    .concept-h4 {
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-
-    .concept-ul {
-      list-style: none;
-      padding-left: 4px;
-      font-size: 0.9rem;
-      color: #cbd5e1;
-    }
-
-    .concept-ul li {
-      margin-bottom: 5px;
-      position: relative;
-      padding-left: 14px;
-      word-break: keep-all;
-    }
-
-    .concept-ul li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    .highlight {
-      color: #fff;
-      font-weight: 700;
-      background: rgba(56, 189, 248, 0.15);
-      padding: 1px 4px;
-      border-radius: 4px;
-    }
-
-    /* 4. CBT 문제 카드 */
     .quiz-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -431,348 +316,144 @@
       gap: 10px;
       margin-top: 20px;
     }
+
+    .btn-sub {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 14px 20px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 12px;
+      cursor: pointer;
+      flex: 1;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
     
-    <!-- 1페이지: 메인 표지 -->
+    <!-- 1페이지: 표지 -->
     <div class="screen active" id="screenCover">
       <div class="cover-wrapper">
-        <div class="cover-badge">KOTSA 국가자격시험 마스터</div>
+        <div class="cover-badge">KOTSA 국가자격시험 CBT 마스터</div>
         <h1 class="cover-title">후이 철교안 공부</h1>
-        <p class="cover-sub">철도교통안전관리자 핵심 요약집 &<br>기출문제 CBT 실전 은행</p>
+        <p class="cover-sub">철도교통안전관리자 1·2권 전 단원<br>기출문제 은행 & 실시간 해설</p>
         <div class="train-icon-box">🚅✨</div>
-        <div class="cover-btn-group">
-          <button class="btn-main" onclick="goToMode('cbt')">실전 기출 CBT 문제풀기 ➔</button>
-          <button class="btn-sub" onclick="goToMode('summary')">📖 1·2권 핵심 개념집 보기</button>
-        </div>
+        <button class="btn-main" onclick="startCBT()">기출문제 풀러 가기 ➔</button>
       </div>
     </div>
 
-    <!-- 2페이지: 학습 & CBT 화면 -->
-    <div class="screen" id="screenMain">
+    <!-- 2페이지: CBT 문제풀이 -->
+    <div class="screen" id="screenCBT">
       <header class="app-header">
         <div class="header-info">
           <h2>후이 철교안 공부</h2>
-          <p id="subStatus">CBT 실전 모드</p>
+          <p id="totalCountLabel">문제를 불러오는 중...</p>
         </div>
         <div class="score-badge" id="scoreDisplay">0 / 0 점</div>
       </header>
 
-      <div class="nav-tabs">
-        <button class="tab-btn active" id="tabBtnCBT" onclick="switchTab('cbt')">실전 기출 CBT</button>
-        <button class="tab-btn" id="tabBtnSummary" onclick="switchTab('summary')">단원별 핵심요약</button>
-      </div>
-
-      <select class="filter-select" id="chapterFilter" onchange="onFilterChange()">
-        <option value="ALL">전체 과목 모아보기 (전체 풀기)</option>
+      <select class="filter-select" id="chapterFilter" onchange="filterQuestions()">
+        <option value="ALL">전체 과목 모아풀기</option>
         <optgroup label="제1편 교통법규 (철도안전법)">
-          <option value="LAW1">제1장 총칙 및 안전관리체계</option>
-          <option value="LAW2">제2장 철도종사자의 안전관리</option>
-          <option value="LAW3">제3장 철도시설 및 차량 안전관리</option>
-          <option value="LAW4">제4장 운행안전 및 철도보호</option>
-          <option value="LAW5">제5장 철도안전기반 구축 및 벌칙</option>
+          <option value="LAW1">제1장 총칙 및 안전관리체계 (78문항)</option>
+          <option value="LAW2">제2장 철도종사자의 안전관리 (63문항)</option>
+          <option value="LAW3">제3장 철도시설 및 차량 안전관리 (40문항)</option>
+          <option value="LAW4">제4장 운행안전 및 철도보호 (50문항)</option>
+          <option value="LAW5">제5장 철도안전기반 구축 및 벌칙 (45문항)</option>
         </optgroup>
         <optgroup label="제2편 교통안전관리론">
-          <option value="MGT1">제1장 교통안전의 일반이론</option>
-          <option value="MGT2">제2장 교통사고 발생 원인</option>
-          <option value="MGT3">제3장 교통사고 방지 대책</option>
-          <option value="MGT4">제4장 교통안전 관리 조직</option>
-          <option value="MGT5">제5장 교통안전 환경</option>
+          <option value="MGT1">제1장 교통안전의 일반이론 (54문항)</option>
+          <option value="MGT2">제2장 교통사고 발생 원인 (61문항)</option>
+          <option value="MGT3">제3장 교통사고 방지 대책 (60문항)</option>
+          <option value="MGT4">제4장 교통안전 관리 조직 (57문항)</option>
+          <option value="MGT5">제5장 교통안전 환경 (52문항)</option>
         </optgroup>
       </select>
 
-      <!-- 문제 컨테이너 -->
-      <div id="quizContainer"></div>
-
-      <!-- 개념 요약 컨테이너 -->
-      <div id="summaryContainer" style="display:none;"></div>
+      <div id="quizList"></div>
 
       <div class="bottom-btn-group">
-        <button class="btn-sub" style="flex:1;" onclick="resetAll()">처음으로</button>
-        <button class="btn-sub" style="flex:1;" onclick="window.scrollTo({top:0, behavior:'smooth'})">맨 위로</button>
+        <button class="btn-sub" onclick="resetCover()">표지로 돌아가기</button>
+        <button class="btn-sub" onclick="window.scrollTo({top:0, behavior:'smooth'})">맨 위로 가기</button>
       </div>
     </div>
 
   </div>
 
   <script>
-    /* =========================================================
-       1. 핵심 개념 정리 데이터 (1권 법규 + 2권 안전관리론)
-       ========================================================= */
-    const conceptSummaryData = {
-      LAW1: {
-        title: "제1편 제1장: 총칙 및 안전관리체계",
-        content: `
-          <div class="concept-section">
-            <div class="concept-h4">1. 주요 용어의 정의</div>
-            <ul class="concept-ul">
-              <li><span class="highlight">열차</span>: 선로를 운행할 목적으로 철도운영자가 편성하여 <strong>'열차번호'</strong>를 부여한 철도차량 (차량번호 ❌)</li>
-              <li><span class="highlight">철도종사자</span>: 운전업무종사자, 관제업무종사자, 여객승무원, 여객역무원, 작업책임자, 철도운행안전관리자 등</li>
-              <li><span class="highlight">철도교통사고 vs 철도안전사고</span>: 운행 관련 사고(충돌, 탈선, 열차화재)는 '교통사고', 시설관리 관련(역사 화재, 시설파손)은 '안전사고' (자연재난 제외)</li>
-              <li><span class="highlight">운행장애 지연 기준</span>: 고속·전동열차 <strong>20분 이상</strong>, 일반여객열차 <strong>30분 이상</strong>, 화물열차 <strong>60분 이상</strong></li>
-            </ul>
-          </div>
-          <div class="concept-section">
-            <div class="concept-h4">2. 법정 계획 및 승인 절차</div>
-            <ul class="concept-ul">
-              <li><span class="highlight">철도안전 종합계획</span>: 국토교통부장관이 <strong>5년마다</strong> 수립, 관보에 고시</li>
-              <li><span class="highlight">시행계획 제출</span>: 시·도지사 및 운영자등이 매년 <strong>10월 말까지</strong> 제출 (추진실적은 매년 2월 말까지)</li>
-              <li><span class="highlight">철도안전투자 공시</span>: 철도운영자가 매년 <strong>5월 말까지</strong> 공시</li>
-              <li><span class="highlight">안전관리체계 승인</span>: 개시 예정일 <strong>90일 전까지</strong> 신청 (정기검사는 1년마다 1회)</li>
-              <li><span class="highlight">절대적 취소 사유</span>: 거짓이나 그 밖의 부정한 방법으로 승인을 받은 경우 (반드시 취소)</li>
-            </ul>
-          </div>`
-      },
-      LAW2: {
-        title: "제1편 제2장: 철도종사자의 안전관리",
-        content: `
-          <div class="concept-section">
-            <div class="concept-h4">1. 운전면허 및 적성검사 기준</div>
-            <ul class="concept-ul">
-              <li><span class="highlight">운전면허 결격사유</span>: <strong>19세 미만</strong>, 뇌전증·정신질환자, 약물·알코올 중독자, 청력·시력 완전 상실자, 취소 후 2년 미경과자</li>
-              <li><span class="highlight">운전적성검사 불합격</span>: 불합격자는 <strong>3개월</strong>, 부정행위자는 <strong>1년</strong>간 응시 제한</li>
-              <li><span class="highlight">운전면허 유효기간</span>: <strong>10년</strong> (만료 전 6개월 이내 갱신 신청, 취소·정지 시 15일 이내 반납)</li>
-              <li><span class="highlight">관제자격증명 종류</span>: 도시철도 관제자격증명, 철도 관제자격증명 (2종류)</li>
-              <li><span class="highlight">정기 적성검사 주기</span>: 최초검사 후 <strong>10년(50세 이상은 5년)</strong>마다 (신체검사는 2년마다)</li>
-            </ul>
-          </div>`
-      },
-      LAW3: {
-        title: "제1편 제3장: 철도시설 및 차량 안전관리",
-        content: `
-          <div class="concept-section">
-            <div class="concept-h4">1. 형식승인 및 종합시험운행</div>
-            <ul class="concept-ul">
-              <li><span class="highlight">철도차량 부품 공급기간</span>: 완성검사를 받은 날부터 <strong>20년 이상</strong> 의무 공급</li>
-              <li><span class="highlight">종합시험운행 절차</span>: <strong>시설물검증시험</strong>(최고속도까지 증속) ➔ <strong>영업시운전</strong>(실제 영업상태 점검) 순서대로 실시</li>
-              <li><span class="highlight">정밀안전진단 주기</span>: 계속 사용 인정 차량은 최초 기간 기준 <strong>5년마다</strong> 정기 정밀안전진단</li>
-            </ul>
-          </div>`
-      },
-      LAW4: {
-        title: "제1편 제4장: 운행안전 및 철도보호",
-        content: `
-          <div class="concept-section">
-            <div class="concept-h4">1. 음주 기준 및 철도보호지구</div>
-            <ul class="concept-ul">
-              <li><span class="highlight">음주 기준</span>: 운전·관제·승무·점검정비 종사자는 <strong>0.02% 이상</strong>, 작업책임자·철도운행안전관리자는 <strong>0.03% 이상</strong></li>
-              <li><span class="highlight">철도보호지구 범위</span>: 철도경계선(최외측 궤도 끝선)으로부터 <strong>30m 이내</strong> (노면전차는 10m 이내)</li>
-              <li><span class="highlight">철도사고 즉시보고 기준</span>: 열차 충돌·탈선, 화재 운행중지, <strong>사상자 3명 이상</strong>, <strong>재산피해 5천만 원 이상</strong></li>
-            </ul>
-          </div>`
-      },
-      LAW5: {
-        title: "제1편 제5장: 철도안전기반 구축 및 벌칙",
-        content: `
-          <div class="concept-section">
-            <div class="concept-h4">1. 벌칙 및 과태료 핵심 요약</div>
-            <ul class="concept-ul">
-              <li><span class="highlight">5년 이하 징역 / 5천만 원 이하 벌금</span>: 폭행·협박으로 철도종사자의 직무집행을 방해한 자</li>
-              <li><span class="highlight">1년 이하 징역 / 1천만 원 이하 벌금</span>: 무면허 운전, 면허 대여 및 알선, 거짓 취득자</li>
-              <li><span class="highlight">1천만 원 이하 과태료</span>: 철도종사자 직무상 지시 불응, 영상기록장치 미설치, 변경승인 미이행</li>
-              <li><span class="highlight">청문 대상</span>: 안전관리체계 승인 취소, 면허 취소·효력정지, 자격 취소 등 신분 박탈 처분</li>
-            </ul>
-          </div>`
-      },
-      MGT1: {
-        title: "제2편 제1장: 교통안전의 일반이론",
-        content: `
-          <div class="concept-section">
-            <div class="concept-h4">1. 교통의 3대 요소 및 정지거리</div>
-            <ul class="concept-ul">
-              <li><span class="highlight">교통의 3대 요소</span>: 통로(도로/선로), 운반구(차량), 동력 (교통의 장: 운전자, 교통수단, 교통환경, 이용자)</li>
-              <li><span class="highlight">정지거리 계산식</span>: 정지거리 = <strong>공주거리 + 제동거리</strong> (공주거리: 브레이크 밟기 전까지 주행 거리)</li>
-              <li><span class="highlight">인사평가 오류</span>: 현혹효과(후광효과), 중심화 경향(모두 중간 점수 부여), 관대화 경향(실제보다 과대평가)</li>
-            </ul>
-          </div>`
-      },
-      MGT2: {
-        title: "제2편 제2장: 교통사고 발생 원인",
-        content: `
-          <div class="concept-section">
-            <div class="concept-h4">1. 시야각 및 시각 특성</div>
-            <ul class="concept-ul">
-              <li><span class="highlight">속도와 시야각</span>: 정지 시 180~200° ➔ 40km/h 시 100° ➔ 70km/h 시 65° ➔ <strong>100km/h 시 40°</strong> (속도에 반비례)</li>
-              <li><span class="highlight">증발현상</span>: 야간 교행차량 전조등 교차 지점에서 도로 중앙 보행자가 일시적으로 안 보이는 현상</li>
-              <li><span class="highlight">하인리히 3E 이론</span>: <strong>Engineering(기술), Education(교육), Enforcement(규제/관리)</strong></li>
-              <li><span class="highlight">사고의 등치성 원리</span>: 사고 요인 중 어느 한 가지 요인이라도 없애면 연쇄반응이 끊겨 사고가 발생하지 않는다는 원리</li>
-            </ul>
-          </div>`
-      },
-      MGT3: {
-        title: "제2편 제3장: 교통사고 방지 대책",
-        content: `
-          <div class="concept-section">
-            <div class="concept-h4">1. 위험예측(IPDE) 및 안전설계</div>
-            <ul class="concept-ul">
-              <li><span class="highlight">IPDE 4단계</span>: 확인(Identify) ➔ 예측(Predict) ➔ 결정(Decision) ➔ 실행(Execute)</li>
-              <li><span class="highlight">Fail-Safe</span>: 부품이나 장치가 고장(Fail)나더라도 안전(Safe)한 방향으로 작동하도록 하는 설계 (철도 적색신호 변경)</li>
-              <li><span class="highlight">하인리히 법칙</span>: <strong>1(중상) : 29(경상) : 300(무상해 사고/잠재 징후)</strong> 비율 법칙</li>
-              <li><span class="highlight">TBM 5단계</span>: 도입 ➔ 점검·정비 ➔ 작업지시 ➔ 위험예측 ➔ 확인 (5~7인 소집단 안전회의)</li>
-            </ul>
-          </div>`
-      },
-      MGT4: {
-        title: "제2편 제4장: 교통안전 관리 조직",
-        content: `
-          <div class="concept-section">
-            <div class="concept-h4">1. 조직관리 및 동기부여 이론</div>
-            <ul class="concept-ul">
-              <li><span class="highlight">매슬로우 욕구 5단계</span>: 생리적 ➔ 안전 ➔ 사회적(애정) ➔ 존중 ➔ <strong>자아실현의 욕구</strong></li>
-              <li><span class="highlight">허즈버그 2요인</span>: 위생요인(작업환경, 급여, 불만족 예방) vs 동기요인(성취감, 책임감, 승진, 만족 증진)</li>
-              <li><span class="highlight">라인형 조직 vs 스탭형 조직</span>: 라인형은 지휘명령 일원화·추진력 강함, 스탭형은 전문적 조언·자문 제공</li>
-            </ul>
-          </div>`
-      },
-      MGT5: {
-        title: "제2편 제5장: 교통안전 환경",
-        content: `
-          <div class="concept-section">
-            <div class="concept-h4">1. 신뢰도 곡선 및 단속 효과</div>
-            <ul class="concept-ul">
-              <li><span class="highlight">욕조곡선(Bathtub Curve)</span>: 초기 고장(DFR) ➔ 우발 고장(CFR, 낮고 일정) ➔ 마모 고장(IFR, 노화로 급증)</li>
-              <li><span class="highlight">할로 효과(Halo Effect)</span>: 특정 지점 단속 실시 후 단속을 중지해도 인근 지역 및 사후 일정 기간 효과가 지속되는 현상</li>
-              <li><span class="highlight">인지반응(PIEV)</span>: 지각(Perception) ➔ 식별(Identification) ➔ 판단/결정(Emotion) ➔ 반응(Volition)</li>
-              <li><span class="highlight">노면 마찰계수</span>: 일반도로(0.8~0.9) ➔ 젖은 노면(0.5~0.7) ➔ 빙판길(0.2~0.3)</li>
-            </ul>
-          </div>`
-    };
-
-    /* =========================================================
-       2. 전체 기출문제 데이터베이스 (PDF 1권 + 2권 전 문항)
-       ========================================================= */
-    const rawQuizDatabase = [
-      /* [교통법규 1장] */
-      { cat: "LAW1", catName: "교통법규 제1장", q: "철도안전법에서 정한 '열차'의 정의로 옳은 것은?", opts: ["선로를 운행할 목적으로 철도운영자가 편성하여 열차번호를 부여한 철도차량", "선로를 운행할 목적으로 시·도지사가 편성하여 열차번호를 부여한 철도차량", "선로를 운행할 목적으로 철도운영자가 편성하여 차량번호를 부여한 철도차량", "선로를 운행할 목적으로 시·도지사가 편성하여 차량번호를 부여한 철도차량"], ans: 0, exp: "철도안전법 제2조 제6호: '열차'란 선로를 운행할 목적으로 철도운영자가 편성하여 '열차번호'를 부여한 철도차량을 말합니다." },
-      { cat: "LAW1", catName: "교통법규 제1장", q: "철도안전법상 국토교통부령으로 정하는 '운행장애'에 해당하는 열차 지연 기준으로 옳은 것은?", opts: ["고속열차 및 전동열차: 10분 이상 지연", "일반여객열차: 20분 이상 지연", "화물열차 및 기타열차: 60분 이상 지연", "전동열차: 30분 이상 지연"], ans: 2, exp: "운행장애 지연 기준: 고속열차 및 전동열차는 20분 이상, 일반여객열차는 30분 이상, 화물열차 및 기타열차는 60분 이상입니다." },
-      { cat: "LAW1", catName: "교통법규 제1장", q: "철도안전 종합계획의 수립의무자와 수립주기가 바르게 짝지어진 것은?", opts: ["국토교통부장관 - 3년마다", "철도시설관리자 - 3년마다", "철도운영자등 - 5년마다", "국토교통부장관 - 5년마다"], ans: 3, exp: "철도안전 종합계획은 국토교통부장관이 5년마다 수립하여 관보에 고시하여야 합니다." },
-      { cat: "LAW1", catName: "교통법규 제1장", q: "시·도지사 및 철도운영자등이 다음 연도의 철도안전종합계획 시행계획을 국토교통부장관에게 제출하여야 하는 기한은?", opts: ["매년 10월 말까지", "매년 11월 말까지", "매년 12월 말까지", "매년 2월 말까지"], ans: 0, exp: "다음 연도 시행계획 제출은 매년 10월 말까지이며, 전년도 추진실적은 매년 2월 말까지 제출합니다." },
-      { cat: "LAW1", catName: "교통법규 제1장", q: "철도운영자가 철도안전투자의 예산규모를 공시해야 하는 시기는?", opts: ["매년 1월 말까지", "매년 3월 말까지", "매년 5월 말까지", "매년 12월 말까지"], ans: 2, exp: "철도운영자는 철도안전투자의 예산 규모를 '매년 5월 말까지' 공시해야 합니다." },
-      { cat: "LAW1", catName: "교통법규 제1장", q: "안전관리체계를 승인받으려는 자는 운영 개시 예정일 며칠 전까지 승인신청서를 제출하여야 하는가?", opts: ["15일 전까지", "30일 전까지", "60일 전까지", "90일 전까지"], ans: 3, exp: "안전관리체계 신규 승인신청서는 개시 예정일 90일 전까지 제출해야 합니다." },
-      { cat: "LAW1", catName: "교통법규 제1장", q: "안전관리체계 승인을 반드시 취소(절대적 취소)하여야 하는 경우는?", opts: ["변경승인을 받지 않고 안전관리체계를 변경한 경우", "거짓이나 그 밖의 부정한 방법으로 승인을 받은 경우", "시정조치명령을 정당한 사유 없이 이행하지 아니한 경우", "안전관리체계를 지속 유지하지 않아 중대한 지장을 초래한 경우"], ans: 1, exp: "거짓이나 그 밖의 부정한 방법으로 승인을 받은 경우는 절대적 취소 사유입니다." },
-
-      /* [교통법규 2장] */
-      { cat: "LAW2", catName: "교통법규 제2장", q: "철도차량 운전면허를 받을 수 없는 결격사유 연령 기준은?", opts: ["18세 미만", "19세 미만", "20세 미만", "21세 미만"], ans: 1, exp: "철도안전법상 철도차량 운전면허의 결격사유 연령은 '19세 미만인 사람'입니다." },
-      { cat: "LAW2", catName: "교통법규 제2장", q: "철도차량 운전적성검사에 불합격한 사람의 재검사 제한 기간은?", opts: ["1개월", "3개월", "6개월", "1년"], ans: 1, exp: "운전적성검사 불합격자는 3개월, 부정행위자는 1년간 응시할 수 없습니다." },
-      { cat: "LAW2", catName: "교통법규 제2장", q: "철도차량 운전면허의 유효기간은 몇 년인가?", opts: ["3년", "5년", "7년", "10년"], ans: 3, exp: "철도차량 운전면허의 유효기간은 10년입니다." },
-      { cat: "LAW2", catName: "교통법규 제2장", q: "운전면허 취소 또는 효력정지 통지를 받은 자는 며칠 이내에 면허증을 반납하여야 하는가?", opts: ["7일 이내", "14일 이내", "15일 이내", "30일 이내"], ans: 2, exp: "통지를 받은 날부터 15일 이내에 국토교통부장관에게 반납하여야 합니다." },
-      { cat: "LAW2", catName: "교통법규 제2장", q: "운전업무종사자에 대한 적성검사 중 정기검사의 시행 주기는?", opts: ["최초검사 후 10년(50세 이상은 5년)마다", "최초검사 후 5년(50세 이상은 10년)마다", "매 2년마다", "매 3년마다"], ans: 0, exp: "적성검사 정기검사는 최초검사 후 10년(50세 이상은 5년)마다 실시합니다." },
-
-      /* [교통법규 3장] */
-      { cat: "LAW3", catName: "교통법규 제3장", q: "철도차량 완성검사를 받아 판매한 자가 구매자에게 부품을 의무적으로 공급해야 하는 기간은?", opts: ["5년 이상", "10년 이상", "15년 이상", "20년 이상"], ans: 3, exp: "완성검사를 받은 날부터 '20년 이상' 부품을 공급해야 합니다." },
-      { cat: "LAW3", catName: "교통법규 제3장", q: "종합시험운행의 순서로 올바르게 짝지어진 것은?", opts: ["영업시운전 후 시설물검증시험", "시설물검증시험 후 영업시운전", "완성차량검사 후 주행시험", "설계적합성검사 후 합치성검사"], ans: 1, exp: "종합시험운행은 '시설물검증시험' 후 '영업시운전' 순서대로 실시합니다." },
-      { cat: "LAW3", catName: "교통법규 제3장", q: "철도차량 정밀안전진단 결과 계속 사용 인정을 받은 차량의 정기 정밀안전진단 주기는?", opts: ["2년마다", "3년마다", "5년마다", "10년마다"], ans: 2, exp: "계속 사용 판정을 받은 경우 '5년마다' 정기 정밀안전진단을 받아야 합니다." },
-
-      /* [교통법규 4장] */
-      { cat: "LAW4", catName: "교통법규 제4장", q: "운전업무종사자가 술을 마셨다고 판단하는 혈중알코올농도 기준은?", opts: ["0.01% 이상", "0.02% 이상", "0.03% 이상", "0.05% 이상"], ans: 1, exp: "운전·관제·승무·정비 종사자는 '0.02% 이상', 작업책임자·철도운행안전관리자는 '0.03% 이상'입니다." },
-      { cat: "LAW4", catName: "교통법규 제4장", q: "일반 철도에서 철도보호지구의 범위는 철도경계선으로부터 몇 미터 이내인가?", opts: ["10m 이내", "20m 이내", "30m 이내", "50m 이내"], ans: 2, exp: "가장 바깥쪽 궤도의 끝선으로부터 30m 이내입니다. (노면전차는 10m 이내)" },
-      { cat: "LAW4", catName: "교통법규 제4장", q: "국토교통부장관에게 즉시 보고하여야 하는 철도사고 기준으로 틀린 것은?", opts: ["열차의 충돌이나 탈선사고", "철도차량에서 화재가 발생하여 운행을 중지시킨 사고", "철도차량 운행과 관련하여 3명 이상 사상자가 발생한 사고", "철도차량 운행과 관련하여 1천만 원 이상의 재산피해가 발생한 사고"], ans: 3, exp: "즉시 보고 대상 재산피해액은 '5천만 원 이상'입니다." },
-
-      /* [교통법규 5장] */
-      { cat: "LAW5", catName: "교통법규 제5장", q: "폭행·협박으로 철도종사자의 직무집행을 방해한 자에 대한 법정형은?", opts: ["1년 이하 징역 / 1천만 원 이하 벌금", "2년 이하 징역 / 2천만 원 이하 벌금", "3년 이하 징역 / 3천만 원 이하 벌금", "5년 이하 징역 / 5천만 원 이하 벌금"], ans: 3, exp: "폭행·협박으로 직무집행을 방해한 자는 5년 이하의 징역 또는 5천만 원 이하의 벌금에 처합니다." },
-      { cat: "LAW5", catName: "교통법규 제5장", q: "철도차량 운전면허 없이 철도차량을 운전한 사람에 대한 벌칙은?", opts: ["1년 이하의 징역 또는 1천만 원 이하의 벌금", "2년 이하의 징역 또는 2천만 원 이하의 벌금", "3년 이하의 징역 또는 3천만 원 이하의 벌금", "500만 원 이하의 과태료"], ans: 0, exp: "무면허 운전은 '1년 이하의 징역 또는 1천만 원 이하의 벌금'에 처합니다." },
-
-      /* [교통안전관리론 1장] */
-      { cat: "MGT1", catName: "안전관리론 제1장", q: "운전자가 위험을 인식하고 브레이크를 밟아 브레이크가 작동하기 직전까지 주행한 거리는?", opts: ["제동거리", "공주거리", "정지거리", "안전거리"], ans: 1, exp: "위험 인지 후 브레이크 작동 시점까지 달린 거리는 '공주거리'입니다." },
-      { cat: "MGT1", catName: "안전관리론 제1장", q: "인사평가에서 피평가자들을 모두 중간점수로 평가하려는 평가자의 오류 경향은?", opts: ["현혹효과", "관대화 경향", "중심화 경향", "논리적 오류"], ans: 2, exp: "평가자가 안전하게 모두 중간점수를 주려는 오류를 '중심화 경향'이라고 합니다." },
-      { cat: "MGT1", catName: "안전관리론 제1장", q: "교통기관의 3대 구성요소에 해당하지 않는 것은?", opts: ["통로", "운반구", "동력", "운전자"], ans: 3, exp: "교통기관의 3대 요소는 통로, 운반구, 동력입니다. (운전자는 교통의 장 구성요소)" },
-
-      /* [교통안전관리론 2장] */
-      { cat: "MGT2", catName: "안전관리론 제2장", q: "정상인의 정지 상태 시야각(180~200°) 대비, 시속 100km/h 주행 시 시야각은 약 몇 도로 축소되는가?", opts: ["40도", "65도", "100도", "120도"], ans: 0, exp: "주행속도가 100km/h일 때 운전자의 시야각은 약 40도로 급격히 좁아집니다." },
-      { cat: "MGT2", catName: "안전관리론 제2장", q: "야간에 반대차선 교행차량의 전조등 불빛이 교차할 때 도로 중앙의 보행자가 순간적으로 사라져 보이는 현상은?", opts: ["현혹현상", "증발현상", "페이드현상", "베이퍼록현상"], ans: 1, exp: "빛의 중첩으로 보행자가 증발하듯 보이지 않는 현상을 '증발현상'이라고 합니다." },
-      { cat: "MGT2", catName: "안전관리론 제2장", q: "하인리히의 3E 이론에서 사고 방지를 위한 3대 기본 축에 해당하지 않는 것은?", opts: ["Engineering(기술)", "Education(교육)", "Enforcement(규제/관리)", "Effort(노력)"], ans: 3, exp: "하인리히의 3E는 Engineering(기술), Education(교육), Enforcement(규제/관리)입니다." },
-      { cat: "MGT2", catName: "안전관리론 제2장", q: "어느 한 요인이라도 배제되면 연쇄반응이 일어나지 않아 사고가 방지된다는 이론은?", opts: ["사고의 등치성 원리", "도미노 이론", "욕조곡선 원리", "잠재오류 이론"], ans: 0, exp: "사고를 구성하는 요소들이 같은 비중을 지니며, 하나만 빠져도 사고가 안 난다는 원리입니다." },
-
-      /* [교통안전관리론 3장] */
-      { cat: "MGT3", catName: "안전관리론 제3장", q: "기계 부품에 결함이 발생하더라도 위험한 상태로 전이되지 않고 안전이 확보되도록 설계하는 기법은?", opts: ["Fool-Proof", "Fail-Safe", "TBM", "TQC"], ans: 1, exp: "고장(Fail) 시에도 안전(Safe)을 유지하도록 하는 설계를 'Fail-Safe'라고 합니다." },
-      { cat: "MGT3", catName: "안전관리론 제3장", q: "하인리히의 재해구성 비율 법칙(중상 : 경상 : 무상해 사고)으로 옳은 것은?", opts: ["1 : 10 : 30", "1 : 29 : 300", "1 : 30 : 600", "1 : 50 : 500"], ans: 1, exp: "1번의 대형사고 뒤에는 29번의 경상해와 300번의 잠재 징후가 있다는 1:29:300 법칙입니다." },
-      { cat: "MGT3", catName: "안전관리론 제3장", q: "위험예측 4단계(IPDE)의 올바른 순서는?", opts: ["확인 - 예측 - 결정 - 실행", "예측 - 확인 - 결정 - 실행", "확인 - 결정 - 예측 - 실행", "예측 - 결정 - 확인 - 실행"], ans: 0, exp: "확인(Identify) ➔ 예측(Predict) ➔ 결정(Decision) ➔ 실행(Execute) 순서입니다." },
-
-      /* [교통안전관리론 4장] */
-      { cat: "MGT4", catName: "안전관리론 제4장", q: "매슬로우의 욕구 5단계 중 가장 상위 단계에 해당하는 욕구는?", opts: ["생리적 욕구", "안전의 욕구", "존중의 욕구", "자아실현의 욕구"], ans: 3, exp: "생리적 ➔ 안전 ➔ 사회적 ➔ 존중 ➔ 자아실현의 욕구 순으로 발전합니다." },
-      { cat: "MGT4", catName: "안전관리론 제4장", q: "지휘명령 계통이 명확하여 추진력이 강력하나 참모의 전문적 조언을 받기 어려운 안전조직 형태는?", opts: ["라인형 조직", "스탭형 조직", "라인·스탭 혼합형", "프로젝트 조직"], ans: 0, exp: "명령계통이 수직적이어서 강력한 추진력을 발휘하는 것은 '라인형 조직'입니다." },
-
-      /* [교통안전관리론 5장] */
-      { cat: "MGT5", catName: "안전관리론 제5장", q: "초기 고장률이 높다가 안정화된 후 마모기에 다시 고장률이 증가하는 설비 고장률 특성 곡선은?", opts: ["학습곡선", "욕조곡선(Bathtub Curve)", "S자 곡선", "정규분포곡선"], ans: 1, exp: "고장률 곡선 형태가 욕조 모양을 띤다고 하여 '욕조곡선(Bathtub Curve)'이라고 합니다." },
-      { cat: "MGT5", catName: "안전관리론 제5장", q: "특정 지점에서 집중 단속을 실시하면 단속을 중지한 후에도 일정 기간 효과가 지속되는 현상은?", opts: ["할로 효과(Halo Effect)", "스필오버 효과", "칵테일파티 효과", "피그말리온 효과"], ans: 0, exp: "단속 중지 후에도 효과가 일정 기간 지속되고 인접 지역으로 파급되는 현상을 '할로 효과'라고 합니다." }
-    ];
-
-    let currentFilter = "ALL";
-    let filteredQuestions = [];
+    let rawDatabase = [];
+    let currentQuestions = [];
     let solvedCount = 0;
     let correctCount = 0;
 
-    /* 화면 전환 함수 */
-    function goToMode(mode) {
+    // quizData.json 파일에서 전체 문제 로드
+    async function loadQuizData() {
+      try {
+        const response = await fetch('./quizData.json');
+        if (!response.ok) throw new Error('파일을 찾을 수 없습니다.');
+        rawDatabase = await response.json();
+      } catch (err) {
+        console.warn('quizData.json 로드 대기 중 (내장 기본 문제 사용)');
+        rawDatabase = [
+          {
+            cat: "LAW1",
+            catName: "교통법규 제1장",
+            q: "철도안전법에서 정한 '열차'의 정의로 옳은 것은?",
+            opts: [
+              "선로를 운행할 목적으로 철도운영자가 편성하여 열차번호를 부여한 철도차량",
+              "선로를 운행할 목적으로 시·도지사가 편성하여 열차번호를 부여한 철도차량",
+              "선로를 운행할 목적으로 철도운영자가 편성하여 차량번호를 부여한 철도차량",
+              "선로를 운행할 목적으로 시·도지사가 편성하여 차량번호를 부여한 철도차량"
+            ],
+            ans: 0,
+            exp: "철도안전법 제2조 제6호: '열차'란 선로를 운행할 목적으로 철도운영자가 편성하여 '열차번호'를 부여한 철도차량을 말합니다."
+          }
+        ];
+      }
+    }
+
+    function startCBT() {
       document.getElementById('screenCover').classList.remove('active');
-      document.getElementById('screenMain').classList.add('active');
-      switchTab(mode);
-    }
-
-    function switchTab(tab) {
-      const isCBT = (tab === 'cbt');
-      document.getElementById('tabBtnCBT').classList.toggle('active', isCBT);
-      document.getElementById('tabBtnSummary').classList.toggle('active', !isCBT);
-      document.getElementById('quizContainer').style.display = isCBT ? 'block' : 'none';
-      document.getElementById('summaryContainer').style.display = isCBT ? 'none' : 'block';
-      document.getElementById('subStatus').innerText = isCBT ? '실전 기출 CBT 모드' : '단원별 핵심요약집';
-
-      if (isCBT) {
-        renderQuiz();
-      } else {
-        renderSummary();
-      }
-    }
-
-    function onFilterChange() {
-      currentFilter = document.getElementById('chapterFilter').value;
-      solvedCount = 0;
-      correctCount = 0;
-      updateScore();
-      if (document.getElementById('tabBtnCBT').classList.contains('active')) {
-        renderQuiz();
-      } else {
-        renderSummary();
-      }
+      document.getElementById('screenCBT').classList.add('active');
+      filterQuestions();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function renderSummary() {
-      const container = document.getElementById('summaryContainer');
-      container.innerHTML = '';
-
-      const keys = (currentFilter === 'ALL') 
-        ? Object.keys(conceptSummaryData) 
-        : [currentFilter];
-
-      keys.forEach(k => {
-        if (conceptSummaryData[k]) {
-          const item = conceptSummaryData[k];
-          const card = document.createElement('div');
-          card.className = 'concept-card';
-          card.innerHTML = `
-            <div class="concept-title">📌 ${item.title}</div>
-            ${item.content}
-          `;
-          container.appendChild(card);
-        }
-      });
+    function resetCover() {
+      document.getElementById('screenCBT').classList.remove('active');
+      document.getElementById('screenCover').classList.add('active');
+      solvedCount = 0;
+      correctCount = 0;
+      updateHeader();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function renderQuiz() {
-      const container = document.getElementById('quizContainer');
-      container.innerHTML = '';
+    function filterQuestions() {
+      const selected = document.getElementById('chapterFilter').value;
+      solvedCount = 0;
+      correctCount = 0;
+      
+      currentQuestions = (selected === 'ALL')
+        ? rawDatabase
+        : rawDatabase.filter(q => q.cat === selected);
 
-      filteredQuestions = (currentFilter === 'ALL')
-        ? allQuizData
-        : allQuizData.filter(q => q.cat === currentFilter);
+      renderList();
+      updateHeader();
+    }
 
-      document.getElementById('totalCountLabel').innerText = `총 ${filteredQuestions.length}문항 탑재`;
+    function renderList() {
+      const listEl = document.getElementById('quizList');
+      listEl.innerHTML = '';
 
-      filteredQuestions.forEach((q, idx) => {
+      if (currentQuestions.length === 0) {
+        listEl.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-muted);">등록된 문제가 없습니다.</div>';
+        return;
+      }
+
+      currentQuestions.forEach((q, idx) => {
         const card = document.createElement('div');
         card.className = 'quiz-card';
         card.id = `qCard_${idx}`;
@@ -785,7 +466,7 @@
           <div class="q-text">${q.q}</div>
           <div class="options-group">
             ${q.opts.map((opt, oIdx) => `
-              <button class="option-btn" onclick="submitAnswer(${idx}, ${oIdx})">
+              <button class="option-btn" onclick="checkAnswer(${idx}, ${oIdx})">
                 <strong style="color:var(--text-muted);">${oIdx + 1}.</strong>
                 <span>${opt}</span>
               </button>
@@ -796,12 +477,12 @@
             <div class="exp-content">${q.exp}</div>
           </div>
         `;
-        container.appendChild(card);
+        listEl.appendChild(card);
       });
     }
 
-    function submitAnswer(qIdx, selectedOptIdx) {
-      const q = filteredQuestions[qIdx];
+    function checkAnswer(qIdx, selectedIdx) {
+      const q = currentQuestions[qIdx];
       const card = document.getElementById(`qCard_${qIdx}`);
       const btns = card.querySelectorAll('.option-btn');
       const expBox = document.getElementById(`exp_${qIdx}`);
@@ -809,13 +490,13 @@
 
       btns.forEach(b => b.disabled = true);
 
-      if (selectedOptIdx === q.ans) {
-        btns[selectedOptIdx].classList.add('selected-correct');
+      if (selectedIdx === q.ans) {
+        btns[selectedIdx].classList.add('selected-correct');
         badge.className = 'exp-badge correct';
         badge.innerText = '⭕ 정답입니다!';
         correctCount++;
       } else {
-        btns[selectedOptIdx].classList.add('selected-wrong');
+        btns[selectedIdx].classList.add('selected-wrong');
         btns[q.ans].classList.add('highlight-ans');
         badge.className = 'exp-badge wrong';
         badge.innerText = `❌ 오답입니다! (정답: ${q.ans + 1}번)`;
@@ -823,27 +504,18 @@
 
       expBox.style.display = 'block';
       solvedCount++;
-      updateScore();
+      updateHeader();
     }
 
-    function updateScore() {
-      const total = filteredQuestions.length;
+    function updateHeader() {
+      const total = currentQuestions.length;
+      document.getElementById('totalCountLabel').innerText = `총 ${total}문항 수록`;
       const score = (total > 0 && solvedCount > 0) ? Math.round((correctCount / total) * 100) : 0;
       document.getElementById('scoreDisplay').innerText = `${correctCount} / ${solvedCount} 문제 (${score}점)`;
     }
 
-    function resetAll() {
-      document.getElementById('screenMain').classList.remove('active');
-      document.getElementById('screenCover').classList.add('active');
-      solvedCount = 0;
-      correctCount = 0;
-      updateScore();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      filteredQuestions = allQuizData;
-      renderQuiz();
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadQuizData();
     });
   </script>
 </body>
