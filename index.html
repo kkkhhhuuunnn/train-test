@@ -341,7 +341,7 @@
       <div class="cover-wrapper">
         <div class="cover-badge">KOTSA 철도교통안전관리자 완전정복</div>
         <h1 class="cover-title">후이 철교안 공부</h1>
-        <p class="cover-sub">제1편 철도안전법 & 제2편 교통안전관리론<br>단원별 기출문제 CBT 은행</p>
+        <p class="cover-sub">교통법규 · 교통안전관리론 · 철도공학 · 열차운전<br>단원별 기출문제 완벽 대비 CBT</p>
         <div class="train-icon-box">🚅✨</div>
         <button class="btn-main" onclick="startCBT()">기출문제 풀러 가기 ➔</button>
       </div>
@@ -357,21 +357,33 @@
         <div class="score-badge" id="scoreDisplay">0 / 0 점</div>
       </header>
 
-      <!-- 단원 선택 (선택 시 해당 json 파일을 자동으로 fetch) -->
+      <!-- 4과목 전체 단원 선택 -->
       <select class="filter-select" id="chapterFilter" onchange="onChapterSelect()">
         <optgroup label="제1편 교통법규 (철도안전법)">
-          <option value="law1.json" selected>제1장 총칙 및 안전관리체계 (78문항)</option>
-          <option value="law2.json">제2장 철도종사자의 안전관리 (63문항)</option>
-          <option value="law3.json">제3장 철도시설 및 차량 안전관리 (40문항)</option>
-          <option value="law4.json">제4장 운행안전 및 철도보호 (50문항)</option>
-          <option value="law5.json">제5장 철도안전기반 구축 및 벌칙 (45문항)</option>
+          <option value="law1.json" selected>제1장 총칙 및 안전관리체계</option>
+          <option value="law2.json">제2장 철도종사자의 안전관리</option>
+          <option value="law3.json">제3장 철도시설 및 차량 안전관리</option>
+          <option value="law4.json">제4장 운행안전 및 철도보호</option>
+          <option value="law5.json">제5장 철도안전기반 구축 및 벌칙</option>
         </optgroup>
         <optgroup label="제2편 교통안전관리론">
-          <option value="mgt1.json">제1장 교통안전의 일반이론 (54문항)</option>
-          <option value="mgt2.json">제2장 교통사고 발생 원인 (61문항)</option>
-          <option value="mgt3.json">제3장 교통사고 방지 대책 (60문항)</option>
-          <option value="mgt4.json">제4장 교통안전 관리 조직 (57문항)</option>
-          <option value="mgt5.json">제5장 교통안전 환경 (52문항)</option>
+          <option value="mgt1.json">제1장 교통안전의 일반이론</option>
+          <option value="mgt2.json">제2장 교통사고 발생 원인</option>
+          <option value="mgt3.json">제3장 교통사고 방지 대책</option>
+          <option value="mgt4.json">제4장 교통안전 관리 조직</option>
+          <option value="mgt5.json">제5장 교통안전 환경</option>
+        </optgroup>
+        <optgroup label="제3편 철도공학">
+          <option value="eng1.json">철도공학 제1장</option>
+          <option value="eng2.json">철도공학 제2장</option>
+          <option value="eng3.json">철도공학 제3장</option>
+          <option value="eng4.json">철도공학 제4장</option>
+        </optgroup>
+        <optgroup label="제4편 열차운전">
+          <option value="drv1.json">열차운전 제1장</option>
+          <option value="drv2.json">열차운전 제2장</option>
+          <option value="drv3.json">열차운전 제3장</option>
+          <option value="drv4.json">열차운전 제4장</option>
         </optgroup>
       </select>
 
@@ -390,7 +402,6 @@
     let solvedCount = 0;
     let correctCount = 0;
 
-    // 선택된 json 파일을 비동기로 불러오는 핵심 함수
     async function fetchChapterData(filename) {
       const listEl = document.getElementById('quizList');
       listEl.innerHTML = '<div style="text-align:center; padding:50px 20px; color:var(--text-muted);">문제를 불러오는 중입니다... ⏳</div>';
@@ -409,9 +420,9 @@
         console.error(err);
         listEl.innerHTML = `
           <div style="text-align:center; padding:50px 20px; color:#f87171; line-height:1.6;">
-            <strong>⚠️ [${filename}] 파일을 불러오지 못했습니다.</strong><br>
+            <strong>⚠️ [${filename}] 파일을 아직 불러올 수 없습니다.</strong><br>
             <span style="font-size:0.85rem; color:var(--text-muted);">
-              깃허브 저장소에 <code>${filename}</code> 파일이 생성되어 있는지 확인해 주세요.
+              깃허브 저장소에 <code>${filename}</code> 파일이 업로드되어 있는지 확인해 주세요.
             </span>
           </div>`;
         document.getElementById('totalCountLabel').innerText = '문제 로드 대기 중';
